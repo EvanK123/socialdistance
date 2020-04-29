@@ -94,7 +94,8 @@ public abstract class Resident
 		Rectangle rect2 = new Rectangle(this.x,this.y, width, height);
 		
 		//collision check
-		if(rect1.intersects(rect2)) {
+		if(rect1.intersects(rect2)) 
+		{
 			this.collisionAction(r2);
 		}
 						
@@ -120,12 +121,14 @@ public abstract class Resident
 		y += vy;
 		
 		//code to reverse object when reaching left/right extents
-		if(x < 0 || x >= xExt) {
+		if(x < 0 || x >= xExt) 
+		{
 			vx *= -1;
 		}
 		
 		//code to reverse object when reaching top/bottom extents
-		if(y < 0 || y >= yExt) {
+		if(y < 0 || y >= yExt) 
+		{
 			vy *= -1;
 		}
 

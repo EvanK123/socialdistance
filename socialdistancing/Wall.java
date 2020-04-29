@@ -39,6 +39,8 @@ public class Wall{
         this.height = image.getHeight(null);
     }    
 
+    
+    
     public Image getImage() 
     {
         return image;
