@@ -27,14 +27,12 @@ public class Wall{
 
     protected void loadImage(String imageName) 
     {
-
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
     }
     
     protected void getImageDimensions() 
     {
-
         this.width = image.getWidth(null);
         this.height = image.getHeight(null);
     }    
