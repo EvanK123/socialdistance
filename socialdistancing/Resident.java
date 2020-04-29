@@ -73,7 +73,8 @@ public abstract class Resident
 		//social distancing part - when do the objects have movement vx and vy?
 		//for instance 10% of the time the code below will run to give the objects a non-zero vx and vy
 		//to simulate that 10% of instantiated objects are NOT practicing social distancing
-		if(Math.random() < roamingPercent) {
+		if(Math.random() < roamingPercent) 
+		{
 			vx  = (int)(Math.random()*(10+1)+-5);	// velocity x
 			vy  = (int)(Math.random()*(10+1)+-5);	// velocity y
 			isRoaming = true;
