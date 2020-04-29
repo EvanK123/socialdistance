@@ -123,15 +123,11 @@ public abstract class Resident
 		
 		//code to reverse object when reaching left/right extents
 		if(x < 0 || x >= xExt) 
-		{
 			vx *= -1;
-		}
 		
 		//code to reverse object when reaching top/bottom extents
 		if(y < 0 || y >= yExt) 
-		{
 			vy *= -1;
-		}
 
 	}
 	

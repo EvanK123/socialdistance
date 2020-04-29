@@ -162,7 +162,7 @@ public class Control
 				
 			}
 		}
-		
+
 		//Declares Wall sprites and positions of walls
 		static Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
 		static Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
@@ -213,9 +213,7 @@ public class Control
 			{
 				if(r[i].intersects(personRect))
 					if(walls[i].vertical)
-					{
 						p.vx *= -1;
-					}
 					else
 						p.vy *= -1;
 			}
