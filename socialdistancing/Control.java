@@ -6,7 +6,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-public class Control {
+public class Control 
+{
 		String title = "Social Distance Simulation";
 		//Model and View
 		ArrayList<Person> model; //the community of Person objects	
@@ -39,7 +40,8 @@ public class Control {
 		/*
 		 * Default constructor uses Static/Default simulation values
 		 */
-		public Control() {
+		public Control() 
+		{
 			//This sets defaults in case run with default constructor
 			// simulation control starting values
 			numPeople = Settings.sNumPeople;			
@@ -64,7 +66,8 @@ public class Control {
 		/*
 		 * This constructor uses user defined simulation Settings
 		 */
-		public Control(Settings sets) {
+		public Control(Settings sets) 
+		{
 			// health settings
 			numPeople = sets.numPeople;
 			toRoam = sets.toRoam;
@@ -85,7 +88,8 @@ public class Control {
 		/*
 		 * Tester method to run simulation
 		 */
-		public static void main (String[] args) {
+		public static void main (String[] args) 
+		{
 			Control c = new Control();
 			c.runSimulation();
 		}
@@ -95,13 +99,15 @@ public class Control {
 		 * - The Simulation is managing People in a Graphics frame to simulate a virus outbreak
 		 * - Prerequisite: Control values from constructor are ready
 		 */
-		public void runSimulation() {
+		public void runSimulation() 
+		{
 			//Setup to the Simulation Panel/Frame
 			Building view = new Building(this, title);
 			
 			//Setup the People
 			model = new ArrayList<Person>();
-			for(int i = 0; i < numPeople; i++) {
+			for(int i = 0; i < numPeople; i++) 
+			{
 				//instantiate Person object and add it to the ArrayList
 				model.add(new Person(this));
 			}
@@ -114,12 +120,15 @@ public class Control {
 		 * Call Back method for View
 		 * paints/repaints model of graphic objects repressing person objects in the frame 
 		 */
-		public void paintPersons(Graphics g) {
+		public void paintPersons(Graphics g) 
+		{
 			
 			//find the Person in the Model!
 			int index = 0;
-			for(Person pDot1: model) {
-				for(Person pDot2: model) {
+			for(Person pDot1: model) 
+			{
+				for(Person pDot2: model) 
+				{
 					//for each unique pair invoke the collision detection code
 					pDot1.collisionDetector(pDot2);
 				}
@@ -128,7 +137,8 @@ public class Control {
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
 				//set the color of the for the person oval based on the health status of person object
-				switch(pDot1.state) {
+				switch(pDot1.state) 
+				{
 					case candidate:
 						g.setColor(Color.LIGHT_GRAY);
 						break;
@@ -168,7 +178,8 @@ public class Control {
 				vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
 		
 		
-		public void paintWalls(Graphics g) {
+		public void paintWalls(Graphics g) 
+		{
 
 			//draws vertical walls
 			g.drawImage(vWall1.getImage(), vWall1.getX(), vWall1.getY(), view);
@@ -194,7 +205,8 @@ public class Control {
 		}
 		
 
-		public void personToWallCollision(Person p) {
+		public void personToWallCollision(Person p) 
+		{
 			
 			Rectangle personRect = new Rectangle(p.x,p.y, p.width, p.height);
 			for(int i = 0; i < walls.length;i++)

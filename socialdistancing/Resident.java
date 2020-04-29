@@ -3,7 +3,8 @@ import java.awt.Rectangle;
 
 
 //A citizen is a Person and contains properties to support position and movement
-public abstract class Resident {
+public abstract class Resident 
+{
 	//dynamic copy of Control instance, used for settings
 	Control ctl = null;
 	
@@ -25,7 +26,8 @@ public abstract class Resident {
 	/*
 	 * Constructor using static values
 	 */
-	public Resident() {
+	public Resident() 
+	{
 		// Grid size
 		xExt = Settings.sXExt;
 		yExt = Settings.sYExt;
@@ -41,7 +43,8 @@ public abstract class Resident {
 	/*
 	 * Constructor using Control Panel values
 	 */
-	public Resident(Control ctl) {
+	public Resident(Control ctl) 
+	{
 		// Settings
 		this.ctl = ctl;
 		
@@ -60,7 +63,8 @@ public abstract class Resident {
 	/*
 	 * Constructor helper
 	 */
-	private void init() {
+	private void init() 
+	{
 		
 		//randomize the position of the Person object to be within the SocialDistance frame!
 		x = (int)(Math.random()*(xExt)+0);
@@ -82,7 +86,8 @@ public abstract class Resident {
 	 * Collision detection between two resident objects
 	 * @param p2
 	 */
-	public void collisionDetector(Resident r2) {
+	public void collisionDetector(Resident r2) 
+	{
 		
 		//Represent the Person objects as Rectangles for simple collision detection
 		Rectangle rect1 = new Rectangle(r2.x,r2.y, width, height);
@@ -107,7 +112,8 @@ public abstract class Resident {
 	 * 1. Move x, y position of resident object
 	 * 2. Check if resident object boundary/frame extent is reached, then reflect
 	 */
-	public void velocityManager() {
+	public void velocityManager() 
+	{
 		
 		//x and y components are updated based on their velocities
 		x += vx;
@@ -128,7 +134,8 @@ public abstract class Resident {
 	/**
 	 * Velocity of a roaming object is set to stationary
 	 */
-	public void velocityStop() {
+	public void velocityStop() 
+	{
 		vx = 0; vy = 0;
 		isRoaming = false;
 	}

@@ -12,7 +12,8 @@ import javax.swing.JButton;
 /* Setting control Panel for Simulation
  * JLabel and JSlider work together to get inputs from User
  */
-public class Settings extends JFrame {
+public class Settings extends JFrame 
+{
 	//simulation control starting values (constants)
 	//health controls
 	public static final int sNumPeople = 100;			// people in the simulation
@@ -50,7 +51,8 @@ public class Settings extends JFrame {
 	//simulation control refresh timer, also used to calculate time/age of infection
 	public int timerValue = sTimerValue;
 	
-	public Settings(_Main mainCallBack) {
+	public Settings(_Main mainCallBack) 
+	{
 		setBounds(100, 100, 350, 650);	
 		getContentPane().setLayout(null);
 		
@@ -128,8 +130,10 @@ public class Settings extends JFrame {
 		
 		JButton btnRunSimulation = new JButton("Run Simulation");
 		btnRunSimulation.setBounds(10, 525, 200, 23);
-		btnRunSimulation.addActionListener( new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnRunSimulation.addActionListener( new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				numPeople = sliderNumPeople.getValue();
 				toRoam = sliderToRoam.getValue()/100.0;
 				toBeInfected = sliderToBeInfected.getValue()/100.0;

@@ -3,7 +3,8 @@ package socialdistancing;
 import java.util.ArrayList;
 
 // A person contains properties of Health
-public class Person extends Resident {
+public class Person extends Resident 
+{
 	
 	//health states
 	protected enum virus {candidate, infected, recovered, died};
@@ -19,7 +20,8 @@ public class Person extends Resident {
 	/*
 	 * Default Person constructor from Static values
 	 */
-	public Person() {
+	public Person() 
+	{
 		toRoam = Settings.sToRoam;			    
 		toBeInfected = Settings.sToBeInfected;		
 		toDie = Settings.sToDie;				
@@ -30,7 +32,8 @@ public class Person extends Resident {
 	}
 
 	//Person constructed according to Control Panel settings
-	public Person(Control ctl) {
+	public Person(Control ctl) 
+	{
 		super(ctl);
 		
 		toRoam = ctl.toRoam;			    
@@ -42,10 +45,12 @@ public class Person extends Resident {
 		this.init();
 	}
 		
-	private void init() {
+	private void init() 
+	{
 		
 		//code to make percentage of the Person objects infected 
-		if(Math.random() < toBeInfected) {
+		if(Math.random() < toBeInfected) 
+		{
 			this.setInfected();
 		}
 		
@@ -55,46 +60,59 @@ public class Person extends Resident {
 	}
 	
 	//a series of getters to simplify code reading
-	public boolean isCandidate() {
+	public boolean isCandidate() 
+	{
 		return state == virus.candidate;
 	}
 	
-	public boolean isInfected() {
+	public boolean isInfected() 
+	{
 		return state == virus.infected;
 	}
 	
-	public boolean isRecovered() {
+	public boolean isRecovered() 
+	{
 		return state == virus.recovered;
 	}
 	
-	public boolean isDead() {
+	public boolean isDead() 
+	{
 		return state == virus.died;
 	}
 	
 	// infected setter and update to infected counter
-	public void setInfected() {
+	public void setInfected() 
+	{
 		state = virus.infected;
 		if (ctl != null) ctl.numInfected++;
 	}
 	
 	//calculates health of person over time
-	public void healthManager() {
+	public void healthManager() 
+	{
 		
 		//If person is infected, they eventually recover or die so that they don't 
 		//infect people forever. 
-		if(state == virus.infected) {
+		if(state == virus.infected) 
+		{
 			//recoveryTime update
 			sickTime -= ctl.timerValue;
 			
 			//once the person has been given enough time, they will be considered recovered
-			if(sickTime<=0) {
-				if(Math.random() < toDie) {
+			if(sickTime<=0) 
+			{
+				if(Math.random() < toDie) 
+				{
 					state = virus.died;
-					if (ctl != null) ctl.numDied++;
-				} else {
+					if (ctl != null) 
+						ctl.numDied++;
+				} 
+				else 
+				{
 					state = virus.recovered;
 				}
-				if (ctl != null) ctl.numInfected--;
+				if (ctl != null) 
+					ctl.numInfected--;
 			}
 		}			
 	}
@@ -103,7 +121,8 @@ public class Person extends Resident {
 	 * Check if collision between two person objects has occurred
 	*/
 	@Override
-	public void collisionDetector(Resident p2) {
+	public void collisionDetector(Resident p2) 
+	{
 		super.collisionDetector(p2);
 	}
 	
@@ -113,14 +132,17 @@ public class Person extends Resident {
 	 * @param p2
 	 */
 	@Override
-	public void collisionAction(Resident r2) {
+	public void collisionAction(Resident r2) 
+	{
 	
 		Person p2 = (Person)r2;
 		//infection only happens if one person is infected and the other has never
 		//been infected before
-		if (this.isInfected() && p2.isCandidate()) {
+		if (this.isInfected() && p2.isCandidate()) 
+		{
 			p2.setInfected();
-		}else if(this.isCandidate() && p2.isInfected()) {
+		}else if(this.isCandidate() && p2.isInfected()) 
+		{
 			this.setInfected();
 		}				
 	}
@@ -129,8 +151,10 @@ public class Person extends Resident {
 	 * Perform velocity manager updates on person
 	*/
 	@Override
-	public void velocityManager() {
-		if (isRoaming) {
+	public void velocityManager() 
+	{
+		if (isRoaming) 
+		{
 			if (this.isRecovered() || this.isDead())
 				super.velocityStop();
 			else
@@ -142,7 +166,8 @@ public class Person extends Resident {
 	/*
 	 * Key properties of person
 	 */
-	public String toString() {
+	public String toString() 
+	{
 		
 		return ( "" + state + "\t" + sickTime + "\tx:" + x + "\t" + vx + "\ty:" + y + "\t" + vy ); 
 	}
@@ -150,17 +175,18 @@ public class Person extends Resident {
 	/*
 	 * Main Tester method
 	 */
-	public static void main (String[] args) {
+	public static void main (String[] args) 
+	{
 		int numOfPeople = 25;
 		
 		ArrayList<Person> pl = new ArrayList<Person>();
-		for (int i = 0; i < numOfPeople; i++) {
+		for (int i = 0; i < numOfPeople; i++) 
+		{
 			Person p = new Person();
 			pl.add(p);
 		}
-		for (Person p : pl) {
+		for (Person p : pl) 
 			System.out.println( p );
-		}
 	}
 	
 	

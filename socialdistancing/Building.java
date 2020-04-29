@@ -19,7 +19,8 @@ import javax.swing.Timer;
 	Simulator implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
 	animation timer every timerValue(16ms).
 */
-public class Building extends JPanel implements ActionListener{
+public class Building extends JPanel implements ActionListener
+{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	
@@ -30,7 +31,8 @@ public class Building extends JPanel implements ActionListener{
 	int time = 0; //Track time as the simulation runs
 	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-	public Building(Control ctl, String title) {
+	public Building(Control ctl, String title) 
+	{
 		// used for Control callback
 		this.control = ctl;
 		
@@ -49,7 +51,8 @@ public class Building extends JPanel implements ActionListener{
 	}
 	
 	//activation of Simulator separated from Constructor 
-	public void activate() {
+	public void activate() 
+	{
 		//Timer for animation
 		//Argument 1: timerValue is a period in milliseconds to fire event
 		//Argument 2:t any class that "implements ActionListener"
@@ -62,14 +65,16 @@ public class Building extends JPanel implements ActionListener{
 	
 	/* This invoked by Timer per period in milliseconds in timerValue  */
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		//Triggers paint call through polymorphism
 		repaint();	
 	}
 
 	/* paint method for drawing the simulation and animation */
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics g) 
+	{
 		
 		//tracking total time manually with the time variable
 		time += control.timerValue;
