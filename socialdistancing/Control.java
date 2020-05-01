@@ -6,8 +6,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-public class Control 
+public class Control extends Building 
 {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		String title = "Social Distance Simulation";
 		//Model and View
 		ArrayList<Person> model; //the community of Person objects	
@@ -107,10 +111,7 @@ public class Control
 			//Setup the People
 			model = new ArrayList<Person>();
 			for(int i = 0; i < numPeople; i++) 
-			{
-				//instantiate Person object and add it to the ArrayList
-				model.add(new Person(this));
-			}
+				model.add(new Person(this)); //instantiate Person object and add it to the ArrayList
 			
 			// Start the Simulation
 			view.activate();
@@ -128,10 +129,8 @@ public class Control
 			for(Person pDot1: model) 
 			{
 				for(Person pDot2: model) 
-				{
-					//for each unique pair invoke the collision detection code
-					pDot1.collisionDetector(pDot2);
-				}
+					pDot1.collisionDetector(pDot2);//for each unique pair invoke the collision detection code
+				
 				personToWallCollision(pDot1);
 				pDot1.healthManager(); //manage health values of the Person
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
@@ -150,6 +149,7 @@ public class Control
 						break;
 					case died:
 						g.setColor(Color.black);
+						break;
 						
 				}
 				
@@ -162,20 +162,6 @@ public class Control
 				
 			}
 		}
-
-		//Declares Wall sprites and positions of walls
-		static Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
-		static Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
-		static Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
-		static Wall vWall4 = new Wall(200, 400, "SocialDistancingImages/wall2.png", true);
-		
-		static Wall hWall1 = new Wall(620, 160, "SocialDistancingImages/wall1.png", false);
-		static Wall hWall2 = new Wall(-25, 160, "SocialDistancingImages/wall1.png", false);
-		static Wall hWall3 = new Wall(620, 400, "SocialDistancingImages/wall1.png", false);
-		static Wall hWall4 = new Wall(-25, 400, "SocialDistancingImages/wall1.png", false);
-		static Wall[] walls = {vWall1, hWall1, vWall2, hWall2, vWall3, hWall3, vWall4, hWall4};
-		static Rectangle[] r = {vWall1.getBounds(), hWall1.getBounds(), vWall2.getBounds(), hWall2.getBounds(),
-				vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
 		
 		
 		public void paintWalls(Graphics g) 
@@ -203,20 +189,4 @@ public class Control
 			g.drawString("Mr. M's House", 590, 440);
 			
 		}
-		
-
-		public void personToWallCollision(Person p) 
-		{
-			
-			Rectangle personRect = new Rectangle(p.x,p.y, p.width, p.height);
-			for(int i = 0; i < walls.length;i++)
-			{
-				if(r[i].intersects(personRect))
-					if(walls[i].vertical)
-						p.vx *= -1;
-					else
-						p.vy *= -1;
-			}
-		}
-		
 }

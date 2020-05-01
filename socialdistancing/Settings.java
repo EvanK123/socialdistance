@@ -156,9 +156,5 @@ public class Settings extends JFrame
 		getContentPane().add(btnRunSimulation);
 			
 	}
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 }

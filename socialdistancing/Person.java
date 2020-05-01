@@ -5,7 +5,6 @@ import java.util.ArrayList;
 // A person contains properties of Health
 public class Person extends Resident 
 {
-	
 	//health states
 	protected enum virus {candidate, infected, recovered, died};
 	
@@ -32,7 +31,7 @@ public class Person extends Resident
 	}
 
 	//Person constructed according to Control Panel settings
-	public Person(Control ctl) 
+	public Person(Control ctl)
 	{
 		super(ctl);
 		
@@ -50,9 +49,7 @@ public class Person extends Resident
 		
 		//code to make percentage of the Person objects infected 
 		if(Math.random() < toBeInfected) 
-		{
 			this.setInfected();
-		}
 		
 		//randomize how long it takes for the Person objects to recover!
 		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
@@ -84,7 +81,8 @@ public class Person extends Resident
 	public void setInfected() 
 	{
 		state = virus.infected;
-		if (ctl != null) ctl.numInfected++;
+		if (ctl != null) 
+			ctl.numInfected++;
 	}
 	
 	//calculates health of person over time
@@ -99,8 +97,7 @@ public class Person extends Resident
 			sickTime -= ctl.timerValue;
 			
 			//once the person has been given enough time, they will be considered recovered
-			if(sickTime<=0) 
-			{
+			if(sickTime<=0) {
 				if(Math.random() < toDie) 
 				{
 					state = virus.died;
@@ -108,9 +105,7 @@ public class Person extends Resident
 						ctl.numDied++;
 				} 
 				else 
-				{
 					state = virus.recovered;
-				}
 				if (ctl != null) 
 					ctl.numInfected--;
 			}
@@ -139,12 +134,10 @@ public class Person extends Resident
 		//infection only happens if one person is infected and the other has never
 		//been infected before
 		if (this.isInfected() && p2.isCandidate()) 
-		{
 			p2.setInfected();
-		}else if(this.isCandidate() && p2.isInfected()) 
-		{
-			this.setInfected();
-		}				
+		else 
+			if(this.isCandidate() && p2.isInfected()) 
+				this.setInfected();			
 	}
 	
 	/*
@@ -168,8 +161,7 @@ public class Person extends Resident
 	 */
 	public String toString() 
 	{
-		
-		return ( "" + state + "\t" + sickTime + "\tx:" + x + "\t" + vx + "\ty:" + y + "\t" + vy ); 
+		return ("" + state + "\t" + sickTime + "\tx:" + x + "\t" + vx + "\ty:" + y + "\t" + vy); 
 	}
 	
 	/*
@@ -186,8 +178,6 @@ public class Person extends Resident
 			pl.add(p);
 		}
 		for (Person p : pl) 
-			System.out.println( p );
+			System.out.println(p);
 	}
-	
-	
 }
